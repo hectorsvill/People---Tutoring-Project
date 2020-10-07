@@ -39,8 +39,6 @@ class PeopleTableViewController: UITableViewController {
         
         return cell
     }
-
-
 }
 
 // MARK: - Navigation
@@ -59,6 +57,8 @@ extension PeopleTableViewController {
         }
     }
 }
+
+// MARK: - PersonDetailViewControllerDelegate
 
 extension PeopleTableViewController: PersonDetailViewControllerDelegate {
     func favoriteButtonPressed() {
