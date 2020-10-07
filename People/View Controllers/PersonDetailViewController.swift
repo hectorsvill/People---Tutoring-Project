@@ -31,28 +31,21 @@ class PersonDetailViewController: UIViewController {
         guard let person = person else { return }
         nameLabel.text = person.name
         
-        if person.isFavorite {
-            let systemImageName = favoriteImageName + ".fill"
-            
-        }
-        
-        
+        configureFavoriteImage(person.isFavorite)
     }
     
+    private func configureFavoriteImage(_ isFavorite: Bool) {
+        let systemImageName = isFavorite ? favoriteImageName + ".fill" : favoriteImageName
+        
+        let heartImage = UIImage(systemName: systemImageName)
+        favoriteButton.setImage(heartImage, for: .normal)
+    }
 
     @IBAction func favoriteButtonPressed(_ sender: Any) {
         person.isFavorite.toggle()
+        
+        configureFavoriteImage(person.isFavorite)
+        
         delegate?.favoriteButtonPressed()
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
