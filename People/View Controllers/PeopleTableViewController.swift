@@ -25,17 +25,12 @@ class PeopleTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PersonCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PersonCell", for: indexPath) as? PersonTableViewCell else {
+            return UITableViewCell()
+        }
         
         let person = peopleController.peopleList[indexPath.row]
-        
-        cell.textLabel?.text = "\(person.name)"
-        
-        if person.isFavorite {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
-        }
+        cell.person = person
         
         return cell
     }
@@ -52,7 +47,6 @@ extension PeopleTableViewController {
                 let person = peopleController.peopleList[indexPath.row]
                 personDetailVC.person = person
                 personDetailVC.delegate = self
-                
             }
         }
     }

@@ -8,7 +8,7 @@
 import Foundation
 
 class PeopleController {
-    var peopleList = [Person]()
+    private (set) var peopleList = [Person]()
     
     init() {
         let hector = Person(name: "Hector")
@@ -18,7 +18,7 @@ class PeopleController {
         [hector, shawn, micheal].forEach {
             peopleList.append($0)
         }
-        
     }
+    
     
 }
