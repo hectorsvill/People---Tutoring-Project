@@ -14,23 +14,25 @@ class PersonTableViewCell: UITableViewCell {
         }
     }
     
-    
     @IBOutlet weak var PersonImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var heartButton: UIButton!
+    
+    var heartImage: UIImage {
+        UIImage.fetchFavoriteUIImage(person!.isFavorite)
+    }
     
     private func configureViews() {
         guard let person = person else { return }
         
         nameLabel.text = person.name
-        let heartImage = UIImage.fetchFavoriteUIImage(person.isFavorite)
         heartButton.setImage(heartImage, for: .normal)
         
     }
     
-    
     @IBAction func heartButtonPressed(_ sender: UIButton) {
-        print("Heart button pressed")
+        person?.isFavorite.toggle()
+        heartButton.setImage(heartImage, for: .normal)
     }
     
 }

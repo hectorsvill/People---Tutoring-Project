@@ -39,9 +39,7 @@ class PersonDetailViewController: UIViewController {
 
     @IBAction func favoriteButtonPressed(_ sender: Any) {
         person.isFavorite.toggle()
-        
         configureFavoriteImage(person.isFavorite)
-        
         delegate?.favoriteButtonPressed()
     }
 }
