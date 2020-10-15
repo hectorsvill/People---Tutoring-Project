@@ -19,8 +19,6 @@ class PersonDetailViewController: UIViewController {
     
     var person: Person! = nil
     
-    private let favoriteImageName = "heart"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,9 +33,7 @@ class PersonDetailViewController: UIViewController {
     }
     
     private func configureFavoriteImage(_ isFavorite: Bool) {
-        let systemImageName = isFavorite ? favoriteImageName + ".fill" : favoriteImageName
-        
-        let heartImage = UIImage(systemName: systemImageName)
+        let heartImage = UIImage.fetchFavoriteUIImage(isFavorite)
         favoriteButton.setImage(heartImage, for: .normal)
     }
 

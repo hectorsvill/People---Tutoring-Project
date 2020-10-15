@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B959ED92537F48E00DE5989 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B959ED82537F48E00DE5989 /* PersonTableViewCell.swift */; };
+		3B959EE22537F80700DE5989 /* UIImage+configureFavoriteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B959EE12537F80700DE5989 /* UIImage+configureFavoriteImage.swift */; };
 		3BA5F6FE252D4FE6003D896E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5F6FD252D4FE6003D896E /* AppDelegate.swift */; };
 		3BA5F700252D4FE6003D896E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5F6FF252D4FE6003D896E /* SceneDelegate.swift */; };
 		3BA5F705252D4FE6003D896E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BA5F703252D4FE6003D896E /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		3B959ED82537F48E00DE5989 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
+		3B959EE12537F80700DE5989 /* UIImage+configureFavoriteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+configureFavoriteImage.swift"; sourceTree = "<group>"; };
 		3BA5F6FA252D4FE6003D896E /* People.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = People.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BA5F6FD252D4FE6003D896E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BA5F6FF252D4FE6003D896E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		3B959EE42537FA1900DE5989 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3B959EE12537F80700DE5989 /* UIImage+configureFavoriteImage.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		3BA5F6F1252D4FE6003D896E = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +86,7 @@
 				3BA5F714252D500C003D896E /* View Controllers */,
 				3BA5F725252D5351003D896E /* Model */,
 				3BA5F72A252D5375003D896E /* ModelController */,
+				3B959EE42537FA1900DE5989 /* Extension */,
 				3BA5F706252D4FE8003D896E /* Assets.xcassets */,
 				3BA5F708252D4FE8003D896E /* LaunchScreen.storyboard */,
 				3BA5F703252D4FE6003D896E /* Main.storyboard */,
@@ -189,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B959EE22537F80700DE5989 /* UIImage+configureFavoriteImage.swift in Sources */,
 				3BA5F723252D534C003D896E /* Person.swift in Sources */,
 				3BA5F71B252D50FD003D896E /* PersonDetailViewController.swift in Sources */,
 				3BA5F6FE252D4FE6003D896E /* AppDelegate.swift in Sources */,

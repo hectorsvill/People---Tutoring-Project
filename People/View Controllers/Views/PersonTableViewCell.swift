@@ -20,8 +20,9 @@ class PersonTableViewCell: UITableViewCell {
     @IBOutlet weak var heartButton: UIButton!
     
     private func configureViews() {
+        guard let person = person else { return }
         
-        print("configureViews")
+        nameLabel.text = person.name
         
     }
     
