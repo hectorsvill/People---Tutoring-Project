@@ -23,6 +23,8 @@ class PersonTableViewCell: UITableViewCell {
         guard let person = person else { return }
         
         nameLabel.text = person.name
+        let heartImage = UIImage.fetchFavoriteUIImage(person.isFavorite)
+        heartButton.setImage(heartImage, for: .normal)
         
     }
     
