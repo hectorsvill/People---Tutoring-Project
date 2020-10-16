@@ -14,6 +14,7 @@ Tutoring Project
 - Detail View with `prepare(for segue:`
 - system Images 
 - using `toggle()`
+    - [Bool Doc](https://developer.apple.com/documentation/swift/bool)
 - [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html)
     - A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. 
 - Delegate pattern
