@@ -2,16 +2,17 @@
 //  Person.swift
 //  People
 //
-//  Created by Hector Villasano on 10/6/20.
+//  Created by Hector Villasano on 12/8/20.
 //
 
 import Foundation
 
-class Person {
-    let name: String
-    var isFavorite = false
+struct Result: Codable {
+    let results: [Person]
+}
+
+struct Person: Codable {
+    let email: String
+    let gender: String
     
-    init(name: String) {
-        self.name = name
-    }
 }

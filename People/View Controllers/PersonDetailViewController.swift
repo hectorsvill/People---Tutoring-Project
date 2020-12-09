@@ -17,7 +17,7 @@ class PersonDetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     
-    var person: Person! = nil
+    var person: PersonRep! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()

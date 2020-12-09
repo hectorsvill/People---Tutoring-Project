@@ -8,7 +8,7 @@
 import UIKit
 
 class PersonTableViewCell: UITableViewCell {
-    var person: Person? {
+    var person: PersonRep? {
         didSet {
             configureViews()
         }
