@@ -17,7 +17,7 @@ class PersonDetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     
-    var person: PersonRep! = nil
+    var person: Person! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class PersonDetailViewController: UIViewController {
     
     private func configureViews() {
         guard let person = person else { return }
-        nameLabel.text = person.name
+        nameLabel.text = person.fullName
         
         configureFavoriteImage(person.isFavorite)
     }

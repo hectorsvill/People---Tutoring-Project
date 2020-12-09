@@ -8,23 +8,23 @@
 import Foundation
 
 class PeopleController {
-    private (set) var peopleList = [PersonRep]()
+//    private (set) var people = [PersonRep]()
     private (set) var people = [Person]()
     
     init() {
-        let hector = PersonRep(name: "Hector")
-        let shawn = PersonRep(name: "Shawn")
-        let michael = PersonRep(name: "Michael")
-        
-        [hector, shawn, michael].forEach {
-            peopleList.append($0)
-        }
-        
-        fetchPeople { error in
-            if let error = error {
-                print(error)
-            }
-        }
+//        let hector = PersonRep(name: "Hector")
+//        let shawn = PersonRep(name: "Shawn")
+//        let michael = PersonRep(name: "Michael")
+//        
+//        [hector, shawn, michael].forEach {
+//            people.append($0)
+//        }
+//        
+//        fetchPeople { error in
+//            if let error = error {
+//                print(error)
+//            }
+//        }
     }
     
     func fetchPeople(completion: @escaping (Error?) -> ()) {
@@ -45,11 +45,7 @@ class PeopleController {
             
             do {
                 let result = try JSONDecoder().decode(Result.self, from: data)
-                print(result.results)
-                for p in result.results {
-                    print(p.fullName, p)
-                }
-//                self.people = result.results
+                self.people = result.results
                 completion(nil)
             }catch {
                 completion(error)

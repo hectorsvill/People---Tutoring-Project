@@ -8,7 +8,7 @@
 import UIKit
 
 class PersonTableViewCell: UITableViewCell {
-    var person: PersonRep? {
+    var person: Person? {
         didSet {
             configureViews()
         }
@@ -25,7 +25,7 @@ class PersonTableViewCell: UITableViewCell {
     private func configureViews() {
         guard let person = person else { return }
         
-        nameLabel.text = person.name
+        nameLabel.text = person.fullName
         heartButton.setImage(heartImage, for: .normal)
         
     }

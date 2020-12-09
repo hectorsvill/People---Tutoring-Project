@@ -12,6 +12,12 @@ class PeopleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        peopleController.fetchPeople { _ in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -21,7 +27,7 @@ class PeopleTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return peopleController.peopleList.count
+        return peopleController.people.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -29,7 +35,7 @@ class PeopleTableViewController: UITableViewController {
             return UITableViewCell()
         }
         
-        let person = peopleController.peopleList[indexPath.row]
+        let person = peopleController.people[indexPath.row]
         cell.person = person
         
         return cell
@@ -44,7 +50,7 @@ extension PeopleTableViewController {
             if let personDetailVC = segue.destination as? PersonDetailViewController,
                let indexPath = tableView.indexPathForSelectedRow {
                 
-                let person = peopleController.peopleList[indexPath.row]
+                let person = peopleController.people[indexPath.row]
                 personDetailVC.person = person
                 personDetailVC.delegate = self
             }

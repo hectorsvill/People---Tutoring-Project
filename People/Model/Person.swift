@@ -13,6 +13,9 @@ struct Result: Decodable {
 }
 
 struct Person: Decodable {
+    
+    var isFavorite = false
+    
     let fullName: String
     let gender: String
     let age: Int
