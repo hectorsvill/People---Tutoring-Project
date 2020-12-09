@@ -15,7 +15,17 @@ struct Result: Decodable {
 struct Person: Decodable {
     let fullName: String
     let gender: String
+    let age: Int
+    let dob: String
+    
     let email: String
+    let phone: String
+    let cell: String
+    
+    // pictures
+    let pictureLargeUrl: URL
+    let pictureMediumUrl: URL
+    let thumbnailUrl: URL
     
     // location
     let street: String
@@ -33,14 +43,29 @@ struct Person: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case name
+        case dob
         case gender
         case email
+        case cell
+        case phone
+        case picture
         case location
         
         enum nameCodingKey: String, CodingKey {
             case title
             case first
             case last
+        }
+        
+        enum dobCodingKey: String, CodingKey {
+            case date
+            case age
+        }
+        
+        enum pictureCodingKey: String, CodingKey {
+            case large
+            case medium
+            case thumbnail
         }
         
         enum locationCodingKey: String, CodingKey {
@@ -75,16 +100,40 @@ struct Person: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
+        // gender
+        gender = try container.decode(String.self, forKey: CodingKeys.gender)
+        
+        // name
         let nameContainer = try container.nestedContainer(keyedBy: CodingKeys.nameCodingKey.self, forKey: .name)
         let title = try nameContainer.decode(String.self, forKey: .title)
         let first = try nameContainer.decode(String.self, forKey: .first)
         let last = try nameContainer.decode(String.self, forKey: .last)
-        
         fullName = "\(title). \(first) \(last)"
         
-        email = try container.decode(String.self, forKey: CodingKeys.email)
-        gender = try container.decode(String.self, forKey: CodingKeys.gender)
+        // dob
+        let dobContainer = try container.nestedContainer(keyedBy: CodingKeys.dobCodingKey.self, forKey: .dob)
+        age = try dobContainer.decode(Int.self, forKey: .age)
+        dob = try dobContainer.decode(String.self, forKey: .date)
         
+        email = try container.decode(String.self, forKey: CodingKeys.email)
+        phone = try container.decode(String.self, forKey: .phone)
+        cell = try container.decode(String.self, forKey: .cell)
+        
+        // Picture
+        
+        let pictureContainer = try container.nestedContainer(keyedBy: CodingKeys.pictureCodingKey.self, forKey: .picture)
+        
+        let pictureLarge = try pictureContainer.decode(String.self, forKey: .large)
+        pictureLargeUrl = URL(string: pictureLarge)!
+        
+        let pictureMedium = try pictureContainer.decode(String.self, forKey: .medium)
+        pictureMediumUrl = URL(string: pictureMedium)!
+        
+        let thumbnailString = try pictureContainer.decode(String.self, forKey: .thumbnail)
+        thumbnailUrl = URL(string: thumbnailString)!
+        
+        
+        // location
         let locationContainer = try container.nestedContainer(keyedBy: CodingKeys.locationCodingKey.self, forKey: .location)
         let locationStreetContainer = try locationContainer.nestedContainer(keyedBy: CodingKeys.locationCodingKey.streetCodingKey.self, forKey: .street)
         
@@ -97,8 +146,8 @@ struct Person: Decodable {
         state = try locationContainer.decode(String.self, forKey: .state)
         counrty = try locationContainer.decode(String.self, forKey: .country)
         
-        let postCode = try locationContainer.decode(Int.self, forKey: .postcode)
-        postalCode = String(postCode)
+//        let postCode = try locationContainer.decode(Int.self, forKey: .postcode)
+        postalCode = ""//String(postCode)
         
         let locationCoordinatesContainer = try locationContainer.nestedContainer(keyedBy: CodingKeys.locationCodingKey.coordinatesCodingKeys.self, forKey: .coordinates)
         
